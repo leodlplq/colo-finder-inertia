@@ -1,11 +1,17 @@
+import 'primevue/resources/themes/aura-light-green/theme.css'
+import 'primeicons/primeicons.css'
 import './css/app.css'
 
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import { createInertiaApp } from '@inertiajs/vue3'
+import PrimeVue from 'primevue/config'
 import type { DefineComponent } from 'vue'
 import { createApp, h } from 'vue'
+import Wind from './presets/wind'
+import { createPinia } from 'pinia'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
+const pinia = createPinia()
 
 createInertiaApp({
   progress: { color: '#5468FF' },
@@ -22,6 +28,8 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
+      .use(pinia)
+      .use(PrimeVue, { unstyled: true, pt: Wind })
       .mount(el)
   },
 })
