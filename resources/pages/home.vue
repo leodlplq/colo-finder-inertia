@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
+import Button from 'primevue/button';
+import Layout from '../components/layout/Layout.vue';
+import { useThemeStore } from '../theme';
 
-defineProps<{ version: number }>()
+const theme = useThemeStore()
 </script>
 
 <template>
-  <Head title="Ma bite" />
-
-  <div class="container">
-    <div class="title">AdonisJS {{ version }} x Inertia x Vue.js</div>
-
-    <span>
-      Learn more about AdonisJS and Inertia.js by visiting the
-      <a href="https://docs.adonisjs.com/guides/inertia">AdonisJS documentation</a>.
-    </span>
-  </div>
+  <Layout>
+    <Head title="Homepage" />
+    <Button :icon="theme.getIcon" aria-label="Toggle theme" @click="theme.toggle"/>
+  </Layout>
 </template>
