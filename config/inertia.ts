@@ -11,6 +11,7 @@ export default defineConfig({
    */
   sharedData: {
     errors: (ctx) => ctx.session.flashMessages.get('errors'),
+    currentUser: (ctx) => ctx.auth.user,
   },
 
   /**
@@ -18,6 +19,6 @@ export default defineConfig({
    */
   ssr: {
     enabled: false,
-    entrypoint: 'resources/ssr.ts'
-  }
+    entrypoint: 'resources/ssr.ts',
+  },
 })

@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
-import Button from 'primevue/button';
-import Layout from '../components/layout/Layout.vue';
 import { useThemeStore } from '../theme';
 
 const theme = useThemeStore()
+
+const props = defineProps(['currentUser'])
+console.log('currentuser', props.currentUser)
 </script>
 
 <template>
-  <Layout>
     <Head title="Homepage" />
-    <Button :icon="theme.getIcon" aria-label="Toggle theme" @click="theme.toggle"/>
-  </Layout>
+    <h1>Homepage</h1>
 </template>
